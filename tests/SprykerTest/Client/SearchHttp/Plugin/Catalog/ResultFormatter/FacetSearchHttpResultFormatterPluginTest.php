@@ -86,12 +86,20 @@ class FacetSearchHttpResultFormatterPluginTest extends Unit
         $this->assertEquals(500, $formattedResult['price']->getActiveMin());
         $this->assertEquals(50000, $formattedResult['price']->getActiveMax());
         $this->assertEquals('category', $formattedResult['category']->getName());
+
+        //'Category_1' => 1 (nodeID=2, docCount=1)
         $this->assertEquals('2', $formattedResult['category']->getValues()->offsetGet(0)->getValue());
         $this->assertEquals(1, $formattedResult['category']->getValues()->offsetGet(0)->getDocCount());
+        //'Category_2' => 10
         $this->assertEquals('3', $formattedResult['category']->getValues()->offsetGet(1)->getValue());
         $this->assertEquals(10, $formattedResult['category']->getValues()->offsetGet(1)->getDocCount());
-        $this->assertEquals('4', $formattedResult['category']->getValues()->offsetGet(2)->getValue());
-        $this->assertEquals(100, $formattedResult['category']->getValues()->offsetGet(2)->getDocCount());
+        // also 'Category_2' => 10
+        $this->assertEquals('7', $formattedResult['category']->getValues()->offsetGet(2)->getValue());
+        $this->assertEquals(10, $formattedResult['category']->getValues()->offsetGet(2)->getDocCount());
+        // 'Category_3' => 100
+        $this->assertEquals('4', $formattedResult['category']->getValues()->offsetGet(3)->getValue());
+        $this->assertEquals(100, $formattedResult['category']->getValues()->offsetGet(3)->getDocCount());
+
         $this->assertEquals(1, $formattedResult['custom_configured_range_facet']->getMin());
         $this->assertEquals(5, $formattedResult['custom_configured_range_facet']->getMax());
         $this->assertEquals(1, $formattedResult['custom_configured_range_facet']->getActiveMin());

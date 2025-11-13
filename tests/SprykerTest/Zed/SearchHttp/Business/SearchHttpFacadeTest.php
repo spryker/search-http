@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykerTest\Zed\SearchHttp;
+namespace SprykerTest\Zed\SearchHttp\Business;
 
 use Codeception\Test\Unit;
 use Generated\Shared\Transfer\SearchHttpConfigTransfer;
@@ -18,6 +18,7 @@ use Spryker\Client\Queue\QueueDependencyProvider;
  * @group SprykerTest
  * @group Zed
  * @group SearchHttp
+ * @group Business
  * @group Facade
  * @group SearchHttpFacadeTest
  * Add your own group annotations below this line

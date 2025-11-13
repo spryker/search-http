@@ -100,14 +100,16 @@ class CategoryExtractor implements AggregationExtractorInterface
         $categoryNamesToIds = $this->getCategoryNamesToIds($categoryNodeStorageTransfers);
 
         foreach ($aggregation as $categoryName => $count) {
-            $categoryId = $this->findCategoryIdByName($categoryName, $categoryNamesToIds);
+            $categoryIds = $this->findCategoryIdByName($categoryName, $categoryNamesToIds);
 
-            if ($categoryId) {
-                $facetResultValueTransfer = (new FacetSearchResultValueTransfer())
-                    ->setValue((string)$categoryId)
-                    ->setDocCount($count);
+            if ($categoryIds) {
+                foreach ($categoryIds as $categoryId) {
+                    $facetResultValueTransfer = (new FacetSearchResultValueTransfer())
+                        ->setValue((string)$categoryId)
+                        ->setDocCount($count);
 
-                $facetValues->append($facetResultValueTransfer);
+                    $facetValues->append($facetResultValueTransfer);
+                }
             }
         }
 
@@ -116,29 +118,29 @@ class CategoryExtractor implements AggregationExtractorInterface
 
     /**
      * @param string $categoryName
-     * @param array<string, int> $categoryNamesToIds
+     * @param array<string, array<int>> $categoryNamesToIds
      *
-     * @return int|null
+     * @return array<int>
      */
-    protected function findCategoryIdByName(string $categoryName, array $categoryNamesToIds): ?int
+    protected function findCategoryIdByName(string $categoryName, array $categoryNamesToIds): array
     {
-        return $categoryNamesToIds[$categoryName] ?? null;
+        return $categoryNamesToIds[$categoryName] ?? [];
     }
 
     /**
      * @param \ArrayObject<int, \Generated\Shared\Transfer\CategoryNodeStorageTransfer> $categoryNodeStorageTransfers
      *
-     * @return array<string, int>
+     * @return array<string, array<int>>
      */
     protected function getCategoryNamesToIds(ArrayObject $categoryNodeStorageTransfers): array
     {
         $result = [];
 
         foreach ($categoryNodeStorageTransfers as $categoryNodeStorageTransfer) {
-            $result[$categoryNodeStorageTransfer->getName()] = $categoryNodeStorageTransfer->getNodeIdOrFail();
+            $result[$categoryNodeStorageTransfer->getName()][] = $categoryNodeStorageTransfer->getNodeIdOrFail();
 
             if ($categoryNodeStorageTransfer->getChildren()->count()) {
-                $result = array_merge($result, $this->getCategoryNamesToIds($categoryNodeStorageTransfer->getChildren()));
+                $result = array_merge_recursive($result, $this->getCategoryNamesToIds($categoryNodeStorageTransfer->getChildren()));
             }
         }
 

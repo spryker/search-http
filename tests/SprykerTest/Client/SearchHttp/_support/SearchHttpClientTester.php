@@ -255,7 +255,13 @@ class SearchHttpClientTester extends Actor
                     ->build()
                     ->setNodeId(4)
                     ->setIdCategory(3)
-                    ->setName('Category_3'),
+                    ->setName('Category_3')
+                    ->setChildren(new ArrayObject([
+                        (new CategoryNodeStorageBuilder())->build()
+                            ->setNodeId(7)
+                            ->setIdCategory(7)
+                            ->setName('Category_2'),
+                        ])),
             ],
         );
 
