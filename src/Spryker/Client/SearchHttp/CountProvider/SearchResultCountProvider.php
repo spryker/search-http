@@ -7,6 +7,8 @@
 
 namespace Spryker\Client\SearchHttp\CountProvider;
 
+use Spryker\Client\SearchHttp\Plugin\Catalog\ResultFormatter\PaginationSearchHttpResultFormatterPlugin;
+
 class SearchResultCountProvider implements SearchResultCountProviderInterface
 {
     /**
@@ -20,6 +22,24 @@ class SearchResultCountProvider implements SearchResultCountProviderInterface
             return null;
         }
 
-        return $searchResult['pagination']['num_found'] ?? null;
+        if (!isset($searchResult[PaginationSearchHttpResultFormatterPlugin::NAME])) {
+            return null;
+        }
+
+        $paginationResult = $searchResult[PaginationSearchHttpResultFormatterPlugin::NAME];
+
+        if (is_array($paginationResult)) {
+            return $paginationResult['num_found'] ?? null;
+        }
+
+        if (!is_object($paginationResult)) {
+            return null;
+        }
+
+        if (!method_exists($paginationResult, 'getNumFound')) {
+            return null;
+        }
+
+        return $paginationResult->getNumFound();
     }
 }
