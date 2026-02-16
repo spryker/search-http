@@ -24,7 +24,7 @@ use Spryker\Shared\SearchHttp\SearchHttpConfig;
 class ProductConcreteSearchHttpQueryPlugin extends AbstractPlugin implements SearchContextAwareQueryInterface, SearchStringSetterInterface, QueryInterface, QueryApplicabilityCheckerInterface, SearchTypeIdentifierInterface
 {
     /**
-     * @var \Generated\Shared\Transfer\SearchQueryTransfer;
+     * @var \Generated\Shared\Transfer\SearchQueryTransfer
      */
     protected SearchQueryTransfer $searchQueryTransfer;
 
@@ -66,6 +66,7 @@ class ProductConcreteSearchHttpQueryPlugin extends AbstractPlugin implements Sea
      */
     public function getSearchContext(): SearchContextTransfer
     {
+        // @phpstan-ignore nullCoalesce.initializedProperty (defensive programming for type safety)
         return $this->searchContextTransfer ?? (new SearchContextTransfer())
             ->setSearchHttpContext(new SearchHttpSearchContextTransfer());
     }

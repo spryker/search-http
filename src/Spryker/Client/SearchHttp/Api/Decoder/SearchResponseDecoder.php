@@ -42,6 +42,7 @@ class SearchResponseDecoder implements SearchResponseDecoderInterface
             throw new SearchResponseException('Wrong response format from Search API. Not a JSON or corrupted JSON.');
         }
 
+        // @phpstan-ignore function.alreadyNarrowedType (defensive programming for type safety)
         if (!$responseData || !is_array($responseData)) {
             throw new SearchResponseException('Response data from Search API is empty or invalid');
         }

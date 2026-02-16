@@ -24,7 +24,7 @@ use Spryker\Shared\SearchHttp\SearchHttpConfig;
 class SearchHttpQueryPlugin extends AbstractPlugin implements QueryInterface, SearchContextAwareQueryInterface, SearchStringSetterInterface, QueryApplicabilityCheckerInterface, SearchTypeIdentifierInterface
 {
     /**
-     * @var \Generated\Shared\Transfer\SearchQueryTransfer;
+     * @var \Generated\Shared\Transfer\SearchQueryTransfer
      */
     protected SearchQueryTransfer $searchQueryTransfer;
 
