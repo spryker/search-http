@@ -17,11 +17,6 @@ use Spryker\Zed\Kernel\Persistence\AbstractEntityManager;
  */
 class SearchHttpEntityManager extends AbstractEntityManager implements SearchHttpEntityManagerInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\SearchHttpConfigTransfer $searchHttpConfigTransfer
-     *
-     * @return void
-     */
     public function saveSearchHttpConfig(
         SearchHttpConfigTransfer $searchHttpConfigTransfer
     ): void {
@@ -56,11 +51,6 @@ class SearchHttpEntityManager extends AbstractEntityManager implements SearchHtt
             ->save();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\SearchHttpConfigTransfer $searchHttpConfigTransfer
-     *
-     * @return void
-     */
     public function deleteSearchHttpConfig(SearchHttpConfigTransfer $searchHttpConfigTransfer): void
     {
         $searchHttpConfigEntity = $this->findSearchHttpConfig();
@@ -89,9 +79,6 @@ class SearchHttpEntityManager extends AbstractEntityManager implements SearchHtt
         }
     }
 
-    /**
-     * @return \Orm\Zed\SearchHttp\Persistence\SpySearchHttpConfig|null
-     */
     protected function findSearchHttpConfig(): ?SpySearchHttpConfig
     {
         return $this->getFactory()
@@ -99,12 +86,6 @@ class SearchHttpEntityManager extends AbstractEntityManager implements SearchHtt
             ->findOne();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\SearchHttpConfigCollectionTransfer $searchHttpConfigCollectionTransfer
-     * @param string $applicationId
-     *
-     * @return \Generated\Shared\Transfer\SearchHttpConfigCollectionTransfer
-     */
     protected function removeSearchHttpConfigFromCollectionByApplicationId(
         SearchHttpConfigCollectionTransfer $searchHttpConfigCollectionTransfer,
         string $applicationId
@@ -118,12 +99,6 @@ class SearchHttpEntityManager extends AbstractEntityManager implements SearchHtt
         return $searchHttpConfigCollectionTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\SearchHttpConfigCollectionTransfer $searchHttpConfigCollectionTransfer
-     * @param \Generated\Shared\Transfer\SearchHttpConfigTransfer $searchHttpConfigTransfer
-     *
-     * @return \Generated\Shared\Transfer\SearchHttpConfigCollectionTransfer
-     */
     protected function setSearchHttpConfigToCollection(
         SearchHttpConfigCollectionTransfer $searchHttpConfigCollectionTransfer,
         SearchHttpConfigTransfer $searchHttpConfigTransfer

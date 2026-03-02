@@ -85,9 +85,6 @@ class SearchHttpClientTester extends Actor
      */
     protected const STORE_NAME = 'store';
 
-    /**
-     * @return \Spryker\Client\SearchExtension\Dependency\Plugin\QueryInterface
-     */
     public function getSearchHttpQueryPlugin(): QueryInterface
     {
         return new SearchHttpQueryPlugin(
@@ -97,9 +94,6 @@ class SearchHttpClientTester extends Actor
         );
     }
 
-    /**
-     * @return void
-     */
     public function mockLocaleClientDependency(): void
     {
         $localeClient = Stub::makeEmpty(SearchHttpToLocaleClientInterface::class);
@@ -109,9 +103,6 @@ class SearchHttpClientTester extends Actor
         $this->setDependency(SearchHttpDependencyProvider::CLIENT_LOCALE, $localeClient);
     }
 
-    /**
-     * @return void
-     */
     public function mockStoreClientDependency(): void
     {
         $storeClient = Stub::makeEmpty(SearchHttpToStoreClientInterface::class);
@@ -127,9 +118,6 @@ class SearchHttpClientTester extends Actor
         $this->setDependency(SearchHttpDependencyProvider::CLIENT_STORE, $storeClient);
     }
 
-    /**
-     * @return void
-     */
     public function mockMoneyClientDependency(): void
     {
         $moneyClient = Stub::makeEmpty(SearchHttpToMoneyClientInterface::class, [
@@ -145,11 +133,6 @@ class SearchHttpClientTester extends Actor
         $this->setDependency(SearchHttpDependencyProvider::CLIENT_MONEY, $moneyClient);
     }
 
-    /**
-     * @param array $skusToProductAbstractIds
-     *
-     * @return void
-     */
     public function mockProductStorageClientDependency(array $skusToProductAbstractIds = []): void
     {
         $productStorageClient = Stub::makeEmpty(SearchHttpToProductStorageClientInterface::class);
@@ -159,11 +142,6 @@ class SearchHttpClientTester extends Actor
         $this->setDependency(SearchHttpDependencyProvider::CLIENT_PRODUCT_STORAGE, $productStorageClient);
     }
 
-    /**
-     * @param string $searchHttpConfigJson
-     *
-     * @return void
-     */
     public function mockStorageClientDependency(string $searchHttpConfigJson): void
     {
         $storageClient = Stub::makeEmpty(SearchHttpToStorageClientInterface::class);
@@ -173,9 +151,6 @@ class SearchHttpClientTester extends Actor
         $this->setDependency(SearchHttpDependencyProvider::CLIENT_STORE, $storageClient);
     }
 
-    /**
-     * @return void
-     */
     public function mockSynchronizationServiceDependency(): void
     {
         $synchronizationKeyGeneratorMock = Stub::makeEmpty(SynchronizationKeyGeneratorPluginInterface::class);
@@ -192,9 +167,6 @@ class SearchHttpClientTester extends Actor
         $this->setDependency(SearchHttpDependencyProvider::SERVICE_SYNCHRONIZATION, $synchronizationServiceBridge);
     }
 
-    /**
-     * @return void
-     */
     public function mockUtilEncodingServiceDependency(): void
     {
         $utilEncodingService = Stub::makeEmpty(SearchHttpToUtilEncodingServiceInterface::class);
@@ -206,9 +178,6 @@ class SearchHttpClientTester extends Actor
         $this->setDependency(SearchHttpDependencyProvider::SERVICE_UTIL_ENCODING, $utilEncodingService);
     }
 
-    /**
-     * @return void
-     */
     public function mockAggregationExtractorFactory(): void
     {
         $this->mockFactoryMethod(
@@ -222,17 +191,11 @@ class SearchHttpClientTester extends Actor
         );
     }
 
-    /**
-     * @return void
-     */
     public function addResultProductMapperToMockedFactory(): void
     {
         $this->mockFactoryMethod('createResultProductMapper', new ResultProductMapper());
     }
 
-    /**
-     * @return void
-     */
     public function mockCategoryStorageClientDependency(): void
     {
         $categoryStorageClient = Stub::makeEmpty(SearchHttpToCategoryStorageClientInterface::class);
@@ -277,9 +240,6 @@ class SearchHttpClientTester extends Actor
         $this->setDependency(SearchHttpDependencyProvider::CLIENT_CATEGORY_STORAGE, $categoryStorageClient);
     }
 
-    /**
-     * @return void
-     */
     public function mockSearchConfig(): void
     {
         $searchConfigMock = Stub::makeEmpty(SearchConfigInterface::class);
@@ -341,9 +301,6 @@ class SearchHttpClientTester extends Actor
         $this->mockFactoryMethod('getSearchConfig', $searchConfigMock);
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\SearchHttpResponseTransfer
-     */
     public function createSearchHttpResponse(): SearchHttpResponseTransfer
     {
         return (new SearchHttpResponseBuilder())
@@ -416,9 +373,6 @@ class SearchHttpClientTester extends Actor
             );
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\SuggestionsSearchHttpResponseTransfer
-     */
     public function createSuggestionsSearchHttpResponse(): SuggestionsSearchHttpResponseTransfer
     {
         return (new SuggestionsSearchHttpResponseBuilder())
@@ -471,14 +425,6 @@ class SearchHttpClientTester extends Actor
             ->setCategories(['category-1']);
     }
 
-    /**
-     * @param string $url
-     * @param array $headers
-     * @param \Spryker\Client\SearchExtension\Dependency\Plugin\QueryInterface $searchQuery
-     * @param array $responseData
-     *
-     * @return void
-     */
     public function mockKernelAppClient(string $url, array $headers, QueryInterface $searchQuery, array $responseData): void
     {
         $kernelAppClientMock = Stub::makeEmpty(SearchHttpToKernelAppClientInterface::class);
@@ -529,11 +475,6 @@ class SearchHttpClientTester extends Actor
         $this->mockFactoryMethod('createKernelAppClient', $kernelAppClientMock);
     }
 
-    /**
-     * @param string $ip
-     *
-     * @return void
-     */
     public function mockSearchHttpConfig(string $ip): void
     {
         $clientSearchHttpConfigMock = Stub::makeEmpty(ClientSearchHttpConfig::class);
@@ -541,11 +482,6 @@ class SearchHttpClientTester extends Actor
         $this->mockFactoryMethod('getConfig', $clientSearchHttpConfigMock);
     }
 
-    /**
-     * @param \Spryker\Client\SearchExtension\Dependency\Plugin\QueryInterface $searchQueryPlugin
-     *
-     * @return \Spryker\Client\SearchExtension\Dependency\Plugin\QueryInterface
-     */
     public function extendWithTestData(QueryInterface $searchQueryPlugin): QueryInterface
     {
         $searchQueryPlugin->getSearchQuery()

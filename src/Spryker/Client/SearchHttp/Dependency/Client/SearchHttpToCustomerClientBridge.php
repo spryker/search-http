@@ -22,9 +22,6 @@ class SearchHttpToCustomerClientBridge implements SearchHttpToCustomerClientInte
         $this->customerClient = $customerClient;
     }
 
-    /**
-     * @return string
-     */
     public function getUserIdentifier(): string
     {
         return $this->customerClient->getUserIdentifier();

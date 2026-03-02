@@ -19,9 +19,6 @@ class SearchResponseFormatter implements SearchResponseFormatterInterface
      */
     protected SearchHttpResponseTransferMapperInterface $httpResponseTransferMapper;
 
-    /**
-     * @param \Spryker\Client\SearchHttp\Api\Mapper\SearchHttpResponseTransferMapperInterface $httpResponseTransferMapper
-     */
     public function __construct(
         SearchHttpResponseTransferMapperInterface $httpResponseTransferMapper
     ) {

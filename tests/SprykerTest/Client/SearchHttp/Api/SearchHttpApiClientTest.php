@@ -38,9 +38,6 @@ class SearchHttpApiClientTest extends Unit
      */
     protected $tester;
 
-    /**
-     * @return void
-     */
     public function testSearchHttpRequestSuccessfullySent(): void
     {
         // Arrange
@@ -67,9 +64,6 @@ class SearchHttpApiClientTest extends Unit
         $this->assertEquals($responseData, $response);
     }
 
-    /**
-     * @return void
-     */
     public function testSearchHttpRequestReturnsEmptyArrayOnException(): void
     {
         // Arrange

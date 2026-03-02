@@ -19,31 +19,16 @@ class SearchHttpBusinessHelper extends Module
 {
     use DataCleanupHelperTrait;
 
-    /**
-     * @param array $seed
-     *
-     * @return \Generated\Shared\Transfer\SearchHttpConfigCollectionTransfer
-     */
     public function createSearchHttpConfigCollectionTransfer(array $seed = []): SearchHttpConfigCollectionTransfer
     {
         return (new SearchHttpConfigCollectionBuilder())->seed($seed)->build();
     }
 
-    /**
-     * @param array $seed
-     *
-     * @return \Generated\Shared\Transfer\SearchHttpConfigTransfer
-     */
     public function createSearchHttpConfigTransfer(array $seed = []): SearchHttpConfigTransfer
     {
         return (new SearchHttpConfigBuilder())->seed($seed)->build();
     }
 
-    /**
-     * @param array $seed
-     *
-     * @return void
-     */
     public function haveSearchHttpConfig(array $seed): void
     {
         $searchHttpConfigEntity = (new SpySearchHttpConfig())

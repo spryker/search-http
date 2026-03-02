@@ -25,11 +25,6 @@ class SearchHttpToKernelAppClientBridge implements SearchHttpToKernelAppClientIn
         $this->kernelAppClient = $kernelAppClient;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\AcpHttpRequestTransfer $acpHttpRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\AcpHttpResponseTransfer
-     */
     public function request(AcpHttpRequestTransfer $acpHttpRequestTransfer): AcpHttpResponseTransfer
     {
         return $this->kernelAppClient->request($acpHttpRequestTransfer);

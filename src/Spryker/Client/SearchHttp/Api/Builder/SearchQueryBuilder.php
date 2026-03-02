@@ -32,9 +32,6 @@ class SearchQueryBuilder implements SearchQueryBuilderInterface
      */
     protected SearchHttpToStoreClientInterface $storeClient;
 
-    /**
-     * @param \Spryker\Client\SearchHttp\Dependency\Client\SearchHttpToStoreClientInterface $storeClient
-     */
     public function __construct(SearchHttpToStoreClientInterface $storeClient)
     {
         $this->storeClient = $storeClient;

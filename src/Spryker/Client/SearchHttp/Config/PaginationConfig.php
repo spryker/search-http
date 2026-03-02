@@ -16,19 +16,11 @@ class PaginationConfig implements PaginationConfigInterface
      */
     protected $paginationConfigTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\PaginationConfigTransfer $paginationConfigTransfer
-     *
-     * @return void
-     */
     public function setPagination(PaginationConfigTransfer $paginationConfigTransfer): void
     {
         $this->paginationConfigTransfer = $paginationConfigTransfer;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\PaginationConfigTransfer
-     */
     public function getPagination(): PaginationConfigTransfer
     {
         return $this->paginationConfigTransfer;

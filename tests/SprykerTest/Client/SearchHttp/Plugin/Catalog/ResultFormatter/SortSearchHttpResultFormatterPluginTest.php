@@ -29,9 +29,6 @@ class SortSearchHttpResultFormatterPluginTest extends Unit
      */
     protected $tester;
 
-    /**
-     * @return void
-     */
     public function testProductsResultFormatterHasProperName(): void
     {
         // Arrange
@@ -44,9 +41,6 @@ class SortSearchHttpResultFormatterPluginTest extends Unit
         $this->assertEquals('sort', $name);
     }
 
-    /**
-     * @return void
-     */
     public function testResultSortFormattedSuccessfully(): void
     {
         // Arrange

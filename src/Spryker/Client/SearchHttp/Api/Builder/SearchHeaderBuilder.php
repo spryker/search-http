@@ -17,9 +17,6 @@ class SearchHeaderBuilder implements SearchHeaderBuilderInterface
      */
     protected SearchHttpConfig $searchHttpConfig;
 
-    /**
-     * @param \Spryker\Client\SearchHttp\SearchHttpConfig $searchHttpConfig
-     */
     public function __construct(SearchHttpConfig $searchHttpConfig)
     {
         $this->searchHttpConfig = $searchHttpConfig;

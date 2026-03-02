@@ -19,10 +19,6 @@ class PriceRangeExtractor extends RangeExtractor
      */
     protected $moneyClient;
 
-    /**
-     * @param \Generated\Shared\Transfer\FacetConfigTransfer $facetConfigTransfer
-     * @param \Spryker\Client\SearchHttp\Dependency\Client\SearchHttpToMoneyClientInterface $moneyClient
-     */
     public function __construct(FacetConfigTransfer $facetConfigTransfer, SearchHttpToMoneyClientInterface $moneyClient)
     {
         parent::__construct($facetConfigTransfer);

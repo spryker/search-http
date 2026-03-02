@@ -41,9 +41,6 @@ class SortConfig implements SortConfigInterface
      */
     protected string $sortParamKey;
 
-    /**
-     * @param string $sortParamName
-     */
     public function __construct(string $sortParamName = self::DEFAULT_SORT_PARAM_KEY)
     {
         $this->sortParamKey = $sortParamName;
@@ -137,11 +134,6 @@ class SortConfig implements SortConfigInterface
         return $this->sortConfigTransfers[$activeParam];
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\SortConfigTransfer $sortConfigTransfer
-     *
-     * @return void
-     */
     protected function assertSortConfigTransfer(SortConfigTransfer $sortConfigTransfer): void
     {
         $sortConfigTransfer
@@ -150,11 +142,6 @@ class SortConfig implements SortConfigInterface
             ->requireFieldName();
     }
 
-    /**
-     * @param string $parameterName
-     *
-     * @return string
-     */
     protected function cleanSuffix(string $parameterName): string
     {
         return preg_replace(static::ASC_DESC_PATTERN, '', $parameterName) ?? $parameterName;

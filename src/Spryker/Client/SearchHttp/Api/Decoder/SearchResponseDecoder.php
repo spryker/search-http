@@ -18,9 +18,6 @@ class SearchResponseDecoder implements SearchResponseDecoderInterface
      */
     protected SearchHttpToUtilEncodingServiceInterface $searchHttpToUtilEncodingService;
 
-    /**
-     * @param \Spryker\Client\SearchHttp\Dependency\Service\SearchHttpToUtilEncodingServiceInterface $searchHttpToUtilEncodingService
-     */
     public function __construct(
         SearchHttpToUtilEncodingServiceInterface $searchHttpToUtilEncodingService
     ) {

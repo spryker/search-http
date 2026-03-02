@@ -18,17 +18,11 @@ use Spryker\Zed\SearchHttp\Persistence\Mapper\SearchHttpConfigMapper;
  */
 class SearchHttpPersistenceFactory extends AbstractPersistenceFactory
 {
-    /**
-     * @return \Orm\Zed\SearchHttp\Persistence\SpySearchHttpConfigQuery
-     */
     public function createSearchHttpPropelQuery(): SpySearchHttpConfigQuery
     {
         return SpySearchHttpConfigQuery::create();
     }
 
-    /**
-     * @return \Spryker\Zed\SearchHttp\Persistence\Mapper\SearchHttpConfigMapper
-     */
     public function createSearchHttpConfigMapper(): SearchHttpConfigMapper
     {
         return new SearchHttpConfigMapper();

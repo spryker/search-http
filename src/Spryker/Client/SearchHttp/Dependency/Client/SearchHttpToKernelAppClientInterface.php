@@ -12,10 +12,5 @@ use Generated\Shared\Transfer\AcpHttpResponseTransfer;
 
 interface SearchHttpToKernelAppClientInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\AcpHttpRequestTransfer $acpHttpRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\AcpHttpResponseTransfer
-     */
     public function request(AcpHttpRequestTransfer $acpHttpRequestTransfer): AcpHttpResponseTransfer;
 }

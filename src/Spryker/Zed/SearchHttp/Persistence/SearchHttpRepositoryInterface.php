@@ -12,11 +12,6 @@ use Propel\Runtime\Collection\ObjectCollection;
 
 interface SearchHttpRepositoryInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\SearchHttpConfigCriteriaTransfer $searchHttpConfigCriteriaTransfer
-     *
-     * @return \Propel\Runtime\Collection\ObjectCollection
-     */
     public function getFilteredSearchHttpEntityTransfers(
         SearchHttpConfigCriteriaTransfer $searchHttpConfigCriteriaTransfer
     ): ObjectCollection;

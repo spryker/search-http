@@ -36,37 +36,22 @@ class SearchHttpBusinessTester extends Actor
 {
     use _generated\SearchHttpBusinessTesterActions;
 
-    /**
-     * @return void
-     */
     public function ensureSearchHttpConfigTableIsEmpty(): void
     {
         $this->ensureDatabaseTableIsEmpty($this->getSearchHttpConfigQuery());
     }
 
-    /**
-     * @return \Orm\Zed\SearchHttp\Persistence\SpySearchHttpConfigQuery
-     */
     protected function getSearchHttpConfigQuery(): SpySearchHttpConfigQuery
     {
         return SpySearchHttpConfigQuery::create();
     }
 
-    /**
-     * @return \Orm\Zed\SearchHttp\Persistence\SpySearchHttpConfig|null
-     */
     public function findSearchHttpConfig(): ?SpySearchHttpConfig
     {
         return $this->getSearchHttpConfigQuery()
             ->findOne();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\SearchHttpConfigTransfer $searchHttpConfigTransfer
-     * @param \Orm\Zed\SearchHttp\Persistence\SpySearchHttpConfig|null $searchHttpConfigEntity
-     *
-     * @return void
-     */
     public function assertSearchHttpConfigStoredProperly(
         SearchHttpConfigTransfer $searchHttpConfigTransfer,
         ?SpySearchHttpConfig $searchHttpConfigEntity = null
@@ -96,11 +81,6 @@ class SearchHttpBusinessTester extends Actor
         );
     }
 
-    /**
-     * @param \Orm\Zed\SearchHttp\Persistence\SpySearchHttpConfig|null $searchHttpConfigEntity
-     *
-     * @return void
-     */
     public function assertSearchHttpConfigRemovedProperly(
         ?SpySearchHttpConfig $searchHttpConfigEntity = null
     ): void {
@@ -109,9 +89,6 @@ class SearchHttpBusinessTester extends Actor
         $this->assertEquals([], $searchHttpConfigEntity->getData()['search_http_configs']);
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\StoreTransfer
-     */
     public function createStoreWithStoreReference(): StoreTransfer
     {
         return (new StoreTransfer())

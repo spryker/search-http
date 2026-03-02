@@ -61,9 +61,6 @@ class SearchQueryBuilderTest extends Unit
      */
     protected $storeClientMock;
 
-    /**
-     * @return void
-     */
     protected function setUp(): void
     {
         parent::setUp();

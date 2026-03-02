@@ -29,9 +29,6 @@ class FacetSearchHttpQueryExpanderPluginTest extends Unit
      */
     protected $tester;
 
-    /**
-     * @return void
-     */
     public function testSearchHttpQueryExpandedWithFacets(): void
     {
         // Arrange

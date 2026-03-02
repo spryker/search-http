@@ -9,8 +9,5 @@ namespace Spryker\Client\SearchHttp\Dependency\Client;
 
 interface SearchHttpToLocaleClientInterface
 {
-    /**
-     * @return string
-     */
     public function getCurrentLocale(): string;
 }

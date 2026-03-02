@@ -17,11 +17,6 @@ use Spryker\Zed\Kernel\Persistence\AbstractRepository;
  */
 class SearchHttpRepository extends AbstractRepository implements SearchHttpRepositoryInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\SearchHttpConfigCriteriaTransfer $searchHttpConfigCriteriaTransfer
-     *
-     * @return \Propel\Runtime\Collection\ObjectCollection
-     */
     public function getFilteredSearchHttpEntityTransfers(
         SearchHttpConfigCriteriaTransfer $searchHttpConfigCriteriaTransfer
     ): ObjectCollection {

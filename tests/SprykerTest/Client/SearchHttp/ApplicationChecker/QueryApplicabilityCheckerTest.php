@@ -48,9 +48,6 @@ class QueryApplicabilityCheckerTest extends Unit
         $this->assertTrue($isQueryApplicable);
     }
 
-    /**
-     * @return void
-     */
     public function testQueryApplicabilitySuccessfullyCheckedWhenProductQueryIsApplicable(): void
     {
         // Arrange
@@ -68,9 +65,6 @@ class QueryApplicabilityCheckerTest extends Unit
         $this->assertTrue($isQueryApplicable);
     }
 
-    /**
-     * @return void
-     */
     public function testQueryApplicabilitySuccessfullyCheckedWhenProductQueryIsNotApplicable(): void
     {
         // Arrange
@@ -88,9 +82,6 @@ class QueryApplicabilityCheckerTest extends Unit
         $this->assertFalse($isQueryApplicable);
     }
 
-    /**
-     * @return void
-     */
     public function testQueryApplicabilitySuccessfullyCheckedWhenQueryIsNotApplicable(): void
     {
         // Arrange

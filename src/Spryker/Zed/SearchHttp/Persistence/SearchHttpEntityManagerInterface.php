@@ -11,19 +11,9 @@ use Generated\Shared\Transfer\SearchHttpConfigTransfer;
 
 interface SearchHttpEntityManagerInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\SearchHttpConfigTransfer $searchHttpConfigTransfer
-     *
-     * @return void
-     */
     public function saveSearchHttpConfig(
         SearchHttpConfigTransfer $searchHttpConfigTransfer
     ): void;
 
-    /**
-     * @param \Generated\Shared\Transfer\SearchHttpConfigTransfer $searchHttpConfigTransfer
-     *
-     * @return void
-     */
     public function deleteSearchHttpConfig(SearchHttpConfigTransfer $searchHttpConfigTransfer): void;
 }

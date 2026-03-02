@@ -62,11 +62,6 @@ class PaginationSearchHttpResultFormatterPlugin extends AbstractPlugin implement
         return $paginationSearchResultTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\SearchHttpResponsePaginationTransfer $searchResultPagination
-     *
-     * @return int
-     */
     protected function calculateMaxPage(SearchHttpResponsePaginationTransfer $searchResultPagination): int
     {
         return (int)ceil($searchResultPagination->getNumFoundOrFail() / $searchResultPagination->getCurrentItemsPerPage());

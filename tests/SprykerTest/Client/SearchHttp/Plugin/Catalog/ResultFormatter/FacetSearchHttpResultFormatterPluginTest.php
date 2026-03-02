@@ -29,9 +29,6 @@ class FacetSearchHttpResultFormatterPluginTest extends Unit
      */
     protected $tester;
 
-    /**
-     * @return void
-     */
     public function testFacetResultFormatterHasProperName(): void
     {
         // Arrange
@@ -44,9 +41,6 @@ class FacetSearchHttpResultFormatterPluginTest extends Unit
         $this->assertEquals('facets', $name);
     }
 
-    /**
-     * @return void
-     */
     public function testResultFacetsFormattedSuccessfully(): void
     {
         // Arrange

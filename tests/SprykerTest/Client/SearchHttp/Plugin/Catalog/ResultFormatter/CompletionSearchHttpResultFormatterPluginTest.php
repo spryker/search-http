@@ -29,9 +29,6 @@ class CompletionSearchHttpResultFormatterPluginTest extends Unit
      */
     protected $tester;
 
-    /**
-     * @return void
-     */
     public function testProductsResultFormatterHasProperName(): void
     {
         // Arrange
@@ -44,9 +41,6 @@ class CompletionSearchHttpResultFormatterPluginTest extends Unit
         $this->assertEquals('completion', $name);
     }
 
-    /**
-     * @return void
-     */
     public function testResultCompletionFormattedSuccessfully(): void
     {
         // Arrange

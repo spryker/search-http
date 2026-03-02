@@ -30,9 +30,6 @@ class SearchHttpFacadeTest extends Unit
      */
     protected $tester;
 
-    /**
-     * @return void
-     */
     public function setUp(): void
     {
         parent::setUp();
@@ -47,9 +44,6 @@ class SearchHttpFacadeTest extends Unit
         $this->tester->ensureSearchHttpConfigTableIsEmpty();
     }
 
-    /**
-     * @return void
-     */
     public function testSearchHttpConfigSuccessfullySaved(): void
     {
         // Arrange
@@ -68,9 +62,6 @@ class SearchHttpFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testSearchHttpConfigSuccessfullyReSaved(): void
     {
         // Arrange
@@ -105,9 +96,6 @@ class SearchHttpFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testSearchHttpConfigSuccessfullyDeleted(): void
     {
         // Arrange

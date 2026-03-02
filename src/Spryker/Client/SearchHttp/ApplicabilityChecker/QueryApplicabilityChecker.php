@@ -18,18 +18,10 @@ class QueryApplicabilityChecker implements QueryApplicabilityCheckerInterface
      */
     protected const APP_CONFIG_SETTING_SOURCE_IDENTIFIERS = 'source_identifiers';
 
-    /**
-     * @param \Spryker\Client\SearchHttp\Reader\ConfigReaderInterface $configReader
-     */
     public function __construct(protected ConfigReaderInterface $configReader)
     {
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\SearchContextTransfer $searchContextTransfer
-     *
-     * @return bool
-     */
     public function isQueryApplicable(SearchContextTransfer $searchContextTransfer): bool
     {
         $searchHttpConfigTransfer = $this->configReader->findSearchConfig(new SearchHttpConfigCriteriaTransfer());

@@ -63,12 +63,6 @@ class ResultProductMapper implements ResultProductMapperInterface
         return $result;
     }
 
-    /**
-     * @param string $productUrl
-     * @param string|null $queryId
-     *
-     * @return string
-     */
     protected function expandProductUrlWithQueryId(string $productUrl, ?string $queryId): string
     {
         if (!$queryId) {

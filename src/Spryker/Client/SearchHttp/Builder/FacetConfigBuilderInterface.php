@@ -11,17 +11,7 @@ use Generated\Shared\Transfer\FacetConfigTransfer;
 
 interface FacetConfigBuilderInterface
 {
-    /**
-     * @param string $facetName
-     *
-     * @return \Generated\Shared\Transfer\FacetConfigTransfer
-     */
     public function buildRangeFacetConfigTransfer(string $facetName): FacetConfigTransfer;
 
-    /**
-     * @param string $facetName
-     *
-     * @return \Generated\Shared\Transfer\FacetConfigTransfer
-     */
     public function buildValueFacetConfigTransfer(string $facetName): FacetConfigTransfer;
 }

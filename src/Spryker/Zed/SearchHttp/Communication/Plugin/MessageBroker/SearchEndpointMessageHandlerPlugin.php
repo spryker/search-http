@@ -55,11 +55,6 @@ class SearchEndpointMessageHandlerPlugin extends AbstractPlugin implements Messa
         ];
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\MessageAttributesTransfer $messageAttributesTransfer
-     *
-     * @return string
-     */
     protected function getApplicationId(MessageAttributesTransfer $messageAttributesTransfer): string
     {
         return $messageAttributesTransfer->getActorId() ?: $messageAttributesTransfer->getEmitterOrFail();

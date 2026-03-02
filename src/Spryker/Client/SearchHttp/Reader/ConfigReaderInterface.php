@@ -13,15 +13,7 @@ use Generated\Shared\Transfer\SearchHttpConfigTransfer;
 
 interface ConfigReaderInterface
 {
-    /**
-     * @return \Generated\Shared\Transfer\SearchHttpConfigCollectionTransfer
-     */
     public function getSearchHttpConfigCollectionForCurrentStore(): SearchHttpConfigCollectionTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\SearchHttpConfigCriteriaTransfer $searchHttpConfigCriteria
-     *
-     * @return \Generated\Shared\Transfer\SearchHttpConfigTransfer|null
-     */
     public function findSearchConfig(SearchHttpConfigCriteriaTransfer $searchHttpConfigCriteria): ?SearchHttpConfigTransfer;
 }

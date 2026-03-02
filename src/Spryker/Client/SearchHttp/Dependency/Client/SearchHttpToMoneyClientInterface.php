@@ -11,11 +11,5 @@ use Generated\Shared\Transfer\MoneyTransfer;
 
 interface SearchHttpToMoneyClientInterface
 {
-    /**
-     * @param float $amount
-     * @param string|null $isoCode
-     *
-     * @return \Generated\Shared\Transfer\MoneyTransfer
-     */
     public function fromFloat(float $amount, ?string $isoCode = null): MoneyTransfer;
 }

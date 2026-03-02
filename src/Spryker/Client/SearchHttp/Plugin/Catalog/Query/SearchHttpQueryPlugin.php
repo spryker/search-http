@@ -33,9 +33,6 @@ class SearchHttpQueryPlugin extends AbstractPlugin implements QueryInterface, Se
      */
     protected SearchContextTransfer $searchContextTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\SearchContextTransfer|null $searchContextTransfer
-     */
     public function __construct(?SearchContextTransfer $searchContextTransfer = null)
     {
         $this->searchContextTransfer = $searchContextTransfer ?? (new SearchContextTransfer())

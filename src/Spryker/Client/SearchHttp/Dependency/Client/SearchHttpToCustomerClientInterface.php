@@ -9,8 +9,5 @@ namespace Spryker\Client\SearchHttp\Dependency\Client;
 
 interface SearchHttpToCustomerClientInterface
 {
-    /**
-     * @return string
-     */
     public function getUserIdentifier(): string;
 }

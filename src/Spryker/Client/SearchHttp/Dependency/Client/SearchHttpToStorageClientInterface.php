@@ -9,10 +9,5 @@ namespace Spryker\Client\SearchHttp\Dependency\Client;
 
 interface SearchHttpToStorageClientInterface
 {
-    /**
-     * @param string $key
-     *
-     * @return mixed
-     */
     public function get(string $key): mixed;
 }

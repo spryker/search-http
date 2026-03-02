@@ -29,9 +29,6 @@ class ProductSuggestionSearchHttpResultFormatterPluginTest extends Unit
      */
     protected $tester;
 
-    /**
-     * @return void
-     */
     public function testProductSuggestionResultFormatterHasProperName(): void
     {
         // Arrange
@@ -44,9 +41,6 @@ class ProductSuggestionSearchHttpResultFormatterPluginTest extends Unit
         $this->assertEquals('product_abstract', $name);
     }
 
-    /**
-     * @return void
-     */
     public function testSuggestionResultProductsFormattedSuccessfully(): void
     {
         // Arrange
@@ -78,9 +72,6 @@ class ProductSuggestionSearchHttpResultFormatterPluginTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testProductSkippedIfNotExistsInStorage(): void
     {
         // Arrange

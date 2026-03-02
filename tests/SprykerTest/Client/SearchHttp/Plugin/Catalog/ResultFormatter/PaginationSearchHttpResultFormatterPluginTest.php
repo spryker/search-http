@@ -29,9 +29,6 @@ class PaginationSearchHttpResultFormatterPluginTest extends Unit
      */
     protected $tester;
 
-    /**
-     * @return void
-     */
     public function testPaginationResultFormatterHasProperName(): void
     {
         // Arrange
@@ -44,9 +41,6 @@ class PaginationSearchHttpResultFormatterPluginTest extends Unit
         $this->assertEquals('pagination', $name);
     }
 
-    /**
-     * @return void
-     */
     public function testResultPaginationFormattedSuccessfully(): void
     {
         // Arrange

@@ -92,21 +92,11 @@ class FacetSearchHttpQueryExpanderPlugin extends AbstractPlugin implements Query
         return $searchQuery;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\FacetConfigTransfer $facetConfigTransfer
-     *
-     * @return bool
-     */
     protected function isAllowedActiveFacetConfig(FacetConfigTransfer $facetConfigTransfer): bool
     {
         return in_array($facetConfigTransfer->getParameterName(), static::ALLOWED_DEFAULT_FACET_CONFIGS);
     }
 
-    /**
-     * @param string $requestParameterName
-     *
-     * @return bool
-     */
     protected function isFacetParameter(string $requestParameterName): bool
     {
         return !in_array($requestParameterName, static::NON_FILTERING_GLUE_REQUEST_PARAMS, true);
@@ -137,24 +127,12 @@ class FacetSearchHttpQueryExpanderPlugin extends AbstractPlugin implements Query
         return $this->getFactory()->createFacetConfigBuilder()->buildValueFacetConfigTransfer($requestParameterName);
     }
 
-    /**
-     * @param mixed $requestParameterValue
-     *
-     * @return bool
-     */
     protected function isRangeRequestParameter(mixed $requestParameterValue): bool
     {
         return isset($requestParameterValue[static::KEY_MIN])
             || isset($requestParameterValue[static::KEY_MAX]);
     }
 
-    /**
-     * @param \Spryker\Client\SearchExtension\Dependency\Plugin\QueryInterface $searchQuery
-     * @param \Generated\Shared\Transfer\FacetConfigTransfer $facetConfigTransfer
-     * @param mixed|null $filterValue
-     *
-     * @return \Spryker\Client\SearchExtension\Dependency\Plugin\QueryInterface
-     */
     protected function addFacetFilterToQuery(
         QueryInterface $searchQuery,
         FacetConfigTransfer $facetConfigTransfer,
@@ -175,13 +153,6 @@ class FacetSearchHttpQueryExpanderPlugin extends AbstractPlugin implements Query
         };
     }
 
-    /**
-     * @param \Spryker\Client\SearchExtension\Dependency\Plugin\QueryInterface $searchQuery
-     * @param \Generated\Shared\Transfer\FacetConfigTransfer $facetConfigTransfer
-     * @param mixed $filterValue
-     *
-     * @return \Spryker\Client\SearchExtension\Dependency\Plugin\QueryInterface
-     */
     protected function addRangeFacetFilterToQuery(
         QueryInterface $searchQuery,
         FacetConfigTransfer $facetConfigTransfer,
@@ -204,13 +175,6 @@ class FacetSearchHttpQueryExpanderPlugin extends AbstractPlugin implements Query
         return $searchQuery;
     }
 
-    /**
-     * @param \Spryker\Client\SearchExtension\Dependency\Plugin\QueryInterface $searchQuery
-     * @param \Generated\Shared\Transfer\FacetConfigTransfer $facetConfigTransfer
-     * @param mixed $filterValue
-     *
-     * @return \Spryker\Client\SearchExtension\Dependency\Plugin\QueryInterface
-     */
     protected function addValueFacetFilterToQuery(
         QueryInterface $searchQuery,
         FacetConfigTransfer $facetConfigTransfer,
@@ -236,13 +200,6 @@ class FacetSearchHttpQueryExpanderPlugin extends AbstractPlugin implements Query
         return $searchQuery;
     }
 
-    /**
-     * @param \Spryker\Client\SearchExtension\Dependency\Plugin\QueryInterface $searchQuery
-     * @param \Generated\Shared\Transfer\FacetConfigTransfer $facetConfigTransfer
-     * @param mixed $filterValue
-     *
-     * @return \Spryker\Client\SearchExtension\Dependency\Plugin\QueryInterface
-     */
     protected function addCategoryFacetFilterToQuery(
         QueryInterface $searchQuery,
         FacetConfigTransfer $facetConfigTransfer,
@@ -316,11 +273,6 @@ class FacetSearchHttpQueryExpanderPlugin extends AbstractPlugin implements Query
         return $valueTransformerPlugin->transformFromDisplay($filterValue);
     }
 
-    /**
-     * @param mixed $filterValue
-     *
-     * @return bool
-     */
     protected function isFilterValueEmpty(mixed $filterValue): bool
     {
         if ($this->isFilterValueEmptyArray($filterValue)) {
@@ -330,11 +282,6 @@ class FacetSearchHttpQueryExpanderPlugin extends AbstractPlugin implements Query
         return !$filterValue && !is_numeric($filterValue);
     }
 
-    /**
-     * @param mixed $filterValue
-     *
-     * @return bool
-     */
     protected function isFilterValueEmptyArray(mixed $filterValue): bool
     {
         if (is_array($filterValue) && !array_filter($filterValue, 'strlen')) {

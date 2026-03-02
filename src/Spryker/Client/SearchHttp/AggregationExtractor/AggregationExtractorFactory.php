@@ -36,12 +36,6 @@ class AggregationExtractorFactory implements AggregationExtractorFactoryInterfac
      */
     protected SearchHttpToStoreClientInterface $storeClient;
 
-    /**
-     * @param \Spryker\Client\SearchHttp\Dependency\Client\SearchHttpToMoneyClientInterface $moneyClient
-     * @param \Spryker\Client\SearchHttp\Dependency\Client\SearchHttpToCategoryStorageClientInterface $categoryStorageClient
-     * @param \Spryker\Client\SearchHttp\Dependency\Client\SearchHttpToLocaleClientInterface $localeClient
-     * @param \Spryker\Client\SearchHttp\Dependency\Client\SearchHttpToStoreClientInterface $storeClient
-     */
     public function __construct(
         SearchHttpToMoneyClientInterface $moneyClient,
         SearchHttpToCategoryStorageClientInterface $categoryStorageClient,
@@ -54,21 +48,11 @@ class AggregationExtractorFactory implements AggregationExtractorFactoryInterfac
         $this->storeClient = $storeClient;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\FacetConfigTransfer $facetConfigTransfer
-     *
-     * @return \Spryker\Client\SearchHttp\AggregationExtractor\AggregationExtractorInterface
-     */
     public function create(FacetConfigTransfer $facetConfigTransfer): AggregationExtractorInterface
     {
         return $this->createByType($facetConfigTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\FacetConfigTransfer $facetConfigTransfer
-     *
-     * @return \Spryker\Client\SearchHttp\AggregationExtractor\AggregationExtractorInterface
-     */
     protected function createByType(FacetConfigTransfer $facetConfigTransfer): AggregationExtractorInterface
     {
         return match ($facetConfigTransfer->getType()) {
@@ -79,41 +63,21 @@ class AggregationExtractorFactory implements AggregationExtractorFactoryInterfac
         };
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\FacetConfigTransfer $facetConfigTransfer
-     *
-     * @return \Spryker\Client\SearchHttp\AggregationExtractor\AggregationExtractorInterface
-     */
     protected function createRangeExtractor(FacetConfigTransfer $facetConfigTransfer): AggregationExtractorInterface
     {
         return new RangeExtractor($facetConfigTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\FacetConfigTransfer $facetConfigTransfer
-     *
-     * @return \Spryker\Client\SearchHttp\AggregationExtractor\AggregationExtractorInterface
-     */
     protected function createPriceRangeExtractor(FacetConfigTransfer $facetConfigTransfer): AggregationExtractorInterface
     {
         return new PriceRangeExtractor($facetConfigTransfer, $this->moneyClient);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\FacetConfigTransfer $facetConfigTransfer
-     *
-     * @return \Spryker\Client\SearchHttp\AggregationExtractor\AggregationExtractorInterface
-     */
     protected function createFacetExtractor(FacetConfigTransfer $facetConfigTransfer): AggregationExtractorInterface
     {
         return new FacetExtractor($facetConfigTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\FacetConfigTransfer $facetConfigTransfer
-     *
-     * @return \Spryker\Client\SearchHttp\AggregationExtractor\AggregationExtractorInterface
-     */
     protected function createCategoryExtractor(FacetConfigTransfer $facetConfigTransfer): AggregationExtractorInterface
     {
         return new CategoryExtractor(

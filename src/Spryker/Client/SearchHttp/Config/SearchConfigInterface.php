@@ -9,18 +9,9 @@ namespace Spryker\Client\SearchHttp\Config;
 
 interface SearchConfigInterface
 {
-    /**
-     * @return \Spryker\Client\SearchHttp\Config\FacetConfigInterface
-     */
     public function getFacetConfig(): FacetConfigInterface;
 
-    /**
-     * @return \Spryker\Client\SearchHttp\Config\SortConfigInterface
-     */
     public function getSortConfig(): SortConfigInterface;
 
-    /**
-     * @return \Spryker\Client\SearchHttp\Config\PaginationConfigInterface
-     */
     public function getPaginationConfig(): PaginationConfigInterface;
 }

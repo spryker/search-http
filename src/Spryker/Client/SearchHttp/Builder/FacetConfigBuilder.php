@@ -12,11 +12,6 @@ use Spryker\Shared\SearchHttp\SearchHttpConfig;
 
 class FacetConfigBuilder implements FacetConfigBuilderInterface
 {
-    /**
-     * @param string $facetName
-     *
-     * @return \Generated\Shared\Transfer\FacetConfigTransfer
-     */
     public function buildRangeFacetConfigTransfer(string $facetName): FacetConfigTransfer
     {
         return (new FacetConfigTransfer())
@@ -26,11 +21,6 @@ class FacetConfigBuilder implements FacetConfigBuilderInterface
             ->setType(SearchHttpConfig::FACET_TYPE_RANGE);
     }
 
-    /**
-     * @param string $facetName
-     *
-     * @return \Generated\Shared\Transfer\FacetConfigTransfer
-     */
     public function buildValueFacetConfigTransfer(string $facetName): FacetConfigTransfer
     {
         return (new FacetConfigTransfer())

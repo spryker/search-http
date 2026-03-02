@@ -38,12 +38,6 @@ class CategoryExtractor implements AggregationExtractorInterface
      */
     protected SearchHttpToStoreClientInterface $storeClient;
 
-    /**
-     * @param \Generated\Shared\Transfer\FacetConfigTransfer $facetConfigTransfer
-     * @param \Spryker\Client\SearchHttp\Dependency\Client\SearchHttpToCategoryStorageClientInterface $categoryStorageClient
-     * @param \Spryker\Client\SearchHttp\Dependency\Client\SearchHttpToLocaleClientInterface $localeClient
-     * @param \Spryker\Client\SearchHttp\Dependency\Client\SearchHttpToStoreClientInterface $storeClient
-     */
     public function __construct(
         FacetConfigTransfer $facetConfigTransfer,
         SearchHttpToCategoryStorageClientInterface $categoryStorageClient,

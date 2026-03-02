@@ -29,9 +29,6 @@ class SpellingSuggestionSearchHttpResultFormatterPluginTest extends Unit
      */
     protected $tester;
 
-    /**
-     * @return void
-     */
     public function testProductsResultFormatterHasProperName(): void
     {
         // Arrange

@@ -101,11 +101,6 @@ class SearchHttpDependencyProvider extends AbstractDependencyProvider
      */
     public const SERVICE_SYNCHRONIZATION = 'SERVICE_SYNCHRONIZATION';
 
-    /**
-     * @param \Spryker\Client\Kernel\Container $container
-     *
-     * @return \Spryker\Client\Kernel\Container
-     */
     public function provideServiceLayerDependencies(Container $container): Container
     {
         $container = $this->addStorageClient($container);
@@ -126,11 +121,6 @@ class SearchHttpDependencyProvider extends AbstractDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Client\Kernel\Container $container
-     *
-     * @return \Spryker\Client\Kernel\Container
-     */
     protected function addStorageClient(Container $container): Container
     {
         $container->set(static::CLIENT_STORAGE, function (Container $container) {
@@ -140,11 +130,6 @@ class SearchHttpDependencyProvider extends AbstractDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Client\Kernel\Container $container
-     *
-     * @return \Spryker\Client\Kernel\Container
-     */
     protected function addStoreClient(Container $container): Container
     {
         $container->set(static::CLIENT_STORE, function (Container $container) {
@@ -154,11 +139,6 @@ class SearchHttpDependencyProvider extends AbstractDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Client\Kernel\Container $container
-     *
-     * @return \Spryker\Client\Kernel\Container
-     */
     protected function addLocaleClient(Container $container): Container
     {
         $container->set(static::CLIENT_LOCALE, function (Container $container): SearchHttpToLocaleClientInterface {
@@ -170,11 +150,6 @@ class SearchHttpDependencyProvider extends AbstractDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Client\Kernel\Container $container
-     *
-     * @return \Spryker\Client\Kernel\Container
-     */
     protected function addKernelAppClient(Container $container): Container
     {
         $container->set(static::CLIENT_KERNEL_APP, function (Container $container): SearchHttpToKernelAppClientInterface {
@@ -186,11 +161,6 @@ class SearchHttpDependencyProvider extends AbstractDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Client\Kernel\Container $container
-     *
-     * @return \Spryker\Client\Kernel\Container
-     */
     protected function addSearchConfigBuilderPlugins(Container $container): Container
     {
         $container->set(static::PLUGINS_SEARCH_CONFIG_BUILDER, function (): array {
@@ -200,11 +170,6 @@ class SearchHttpDependencyProvider extends AbstractDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Client\Kernel\Container $container
-     *
-     * @return \Spryker\Client\Kernel\Container
-     */
     protected function addSearchConfigExpanderPlugins(Container $container): Container
     {
         $container->set(static::PLUGINS_SEARCH_CONFIG_EXPANDER, function (): array {
@@ -230,11 +195,6 @@ class SearchHttpDependencyProvider extends AbstractDependencyProvider
         return [];
     }
 
-    /**
-     * @param \Spryker\Client\Kernel\Container $container
-     *
-     * @return \Spryker\Client\Kernel\Container
-     */
     protected function addMoneyClient(Container $container): Container
     {
         $container->set(static::CLIENT_MONEY, function (Container $container): SearchHttpToMoneyClientInterface {
@@ -246,11 +206,6 @@ class SearchHttpDependencyProvider extends AbstractDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Client\Kernel\Container $container
-     *
-     * @return \Spryker\Client\Kernel\Container
-     */
     protected function addCategoryStorageClient(Container $container): Container
     {
         $container->set(static::CLIENT_CATEGORY_STORAGE, function (Container $container): SearchHttpToCategoryStorageClientBridge {
@@ -262,11 +217,6 @@ class SearchHttpDependencyProvider extends AbstractDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Client\Kernel\Container $container
-     *
-     * @return \Spryker\Client\Kernel\Container
-     */
     protected function addProductStorageClient(Container $container): Container
     {
         $container->set(static::CLIENT_PRODUCT_STORAGE, function (Container $container): SearchHttpToProductStorageClientInterface {
@@ -278,11 +228,6 @@ class SearchHttpDependencyProvider extends AbstractDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Client\Kernel\Container $container
-     *
-     * @return \Spryker\Client\Kernel\Container
-     */
     protected function addFacetConfigTransferBuilders(Container $container): Container
     {
         $container->set(static::PLUGIN_FACET_CONFIG_TRANSFER_BUILDERS, function (): array {
@@ -292,11 +237,6 @@ class SearchHttpDependencyProvider extends AbstractDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Client\Kernel\Container $container
-     *
-     * @return \Spryker\Client\Kernel\Container
-     */
     protected function addSortConfigTransferBuilders(Container $container): Container
     {
         $container->set(static::PLUGIN_SORT_CONFIG_TRANSFER_BUILDERS, function (): array {
@@ -306,11 +246,6 @@ class SearchHttpDependencyProvider extends AbstractDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Client\Kernel\Container $container
-     *
-     * @return \Spryker\Client\Kernel\Container
-     */
     protected function addUtilEncodingService(Container $container): Container
     {
         $container->set(static::SERVICE_UTIL_ENCODING, function (Container $container): SearchHttpToUtilEncodingServiceInterface {
@@ -338,11 +273,6 @@ class SearchHttpDependencyProvider extends AbstractDependencyProvider
         return [];
     }
 
-    /**
-     * @param \Spryker\Client\Kernel\Container $container
-     *
-     * @return \Spryker\Client\Kernel\Container
-     */
     protected function addCustomerClient(Container $container): Container
     {
         $container->set(static::CLIENT_CUSTOMER, function (Container $container): SearchHttpToCustomerClientInterface {
@@ -354,11 +284,6 @@ class SearchHttpDependencyProvider extends AbstractDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Client\Kernel\Container $container
-     *
-     * @return \Spryker\Client\Kernel\Container
-     */
     protected function addSynchronizationService(Container $container): Container
     {
         $container->set(static::SERVICE_SYNCHRONIZATION, function (Container $container) {

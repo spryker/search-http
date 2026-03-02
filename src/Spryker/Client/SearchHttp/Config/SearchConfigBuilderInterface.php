@@ -9,9 +9,6 @@ namespace Spryker\Client\SearchHttp\Config;
 
 interface SearchConfigBuilderInterface
 {
-    /**
-     * @return \Spryker\Client\SearchHttp\Config\SearchConfigInterface
-     */
     public function build(): SearchConfigInterface;
 
     /**

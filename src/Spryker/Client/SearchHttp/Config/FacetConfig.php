@@ -56,11 +56,6 @@ class FacetConfig implements FacetConfigInterface
         return $activeFacets;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\FacetConfigTransfer $facetConfigTransfer
-     *
-     * @return void
-     */
     protected function assertFacetConfigTransfer(FacetConfigTransfer $facetConfigTransfer): void
     {
         $facetConfigTransfer

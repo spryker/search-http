@@ -39,12 +39,6 @@ class SearchHttpApiClient implements SearchHttpApiInterface
      */
     protected SearchResponseFormatterInterface $searchResponseFormatter;
 
-    /**
-     * @param \Spryker\Client\SearchHttp\Reader\ConfigReaderInterface $configReader
-     * @param \Spryker\Client\SearchHttp\Api\Sender\RequestSenderInterface $searchRequestSender
-     * @param \Spryker\Client\SearchHttp\Api\Decoder\SearchResponseDecoderInterface $searchResponseDecoder
-     * @param \Spryker\Client\SearchHttp\Api\Formatter\SearchResponseFormatterInterface $searchResponseFormatter
-     */
     public function __construct(
         ConfigReaderInterface $configReader,
         RequestSenderInterface $searchRequestSender,

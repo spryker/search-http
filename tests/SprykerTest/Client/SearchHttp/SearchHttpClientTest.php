@@ -30,9 +30,6 @@ class SearchHttpClientTest extends Unit
      */
     protected $tester;
 
-    /**
-     * @return void
-     */
     public function testSearchSuccessfullyReturnSearchResult(): void
     {
         // Arrange
@@ -51,9 +48,6 @@ class SearchHttpClientTest extends Unit
         $this->tester->getClient()->search($searchQuery);
     }
 
-    /**
-     * @return \Spryker\Client\SearchHttp\Api\SearchHttpApiInterface|\PHPUnit\Framework\MockObject\MockObject
-     */
     protected function mockSearchApiClient(): SearchHttpApiInterface|MockObject
     {
         $searchApiClient = $this->makeEmpty(SearchHttpApiInterface::class);
@@ -66,9 +60,6 @@ class SearchHttpClientTest extends Unit
         return $searchApiClient;
     }
 
-    /**
-     * @return void
-     */
     public function testFormatProductConcreteCatalogHttpSearchResultFormatsTheGivenDataSuccessfully(): void
     {
         // Arrange
@@ -93,9 +84,6 @@ class SearchHttpClientTest extends Unit
         $this->assertSame($productConcretePageSearchTransfer->toArray(), $formattedSearchResults[0]->toArray());
     }
 
-    /**
-     * @return void
-     */
     public function testFindSearchResultTotalCountReturnsCountOnCorrectSearchHttpResult(): void
     {
         // Arrange

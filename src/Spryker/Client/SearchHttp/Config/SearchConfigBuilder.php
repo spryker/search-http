@@ -44,11 +44,6 @@ class SearchConfigBuilder implements SearchConfigBuilderInterface
      */
     protected array $searchConfigExpanderPlugins = [];
 
-    /**
-     * @param \Spryker\Client\SearchHttp\Config\FacetConfigInterface $facetConfig
-     * @param \Spryker\Client\SearchHttp\Config\SortConfigInterface $sortConfig
-     * @param \Spryker\Client\SearchHttp\Config\PaginationConfigInterface $paginationConfig
-     */
     public function __construct(
         FacetConfigInterface $facetConfig,
         SortConfigInterface $sortConfig,
@@ -61,9 +56,6 @@ class SearchConfigBuilder implements SearchConfigBuilderInterface
         static::$isSearchConfigBuilt = false;
     }
 
-    /**
-     * @return \Spryker\Client\SearchHttp\Config\SearchConfigInterface
-     */
     public function build(): SearchConfigInterface
     {
         if (!static::$isSearchConfigBuilt) {

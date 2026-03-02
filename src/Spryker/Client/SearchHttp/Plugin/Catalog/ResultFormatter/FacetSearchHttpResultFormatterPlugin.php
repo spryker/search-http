@@ -113,11 +113,6 @@ class FacetSearchHttpResultFormatterPlugin extends AbstractPlugin implements Res
         return $this->getFactory()->createFacetConfigBuilder()->buildValueFacetConfigTransfer($aggregationName);
     }
 
-    /**
-     * @param string $facetName
-     *
-     * @return bool
-     */
     protected function isPriceFacet(string $facetName): bool
     {
         return (bool)preg_match(static::PATTERN_FACET_NAME_PRICE, $facetName);

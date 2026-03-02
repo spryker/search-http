@@ -22,9 +22,6 @@ class SearchHttpToLocaleClientBridge implements SearchHttpToLocaleClientInterfac
         $this->localeClient = $localeClient;
     }
 
-    /**
-     * @return string
-     */
     public function getCurrentLocale(): string
     {
         return $this->localeClient->getCurrentLocale();

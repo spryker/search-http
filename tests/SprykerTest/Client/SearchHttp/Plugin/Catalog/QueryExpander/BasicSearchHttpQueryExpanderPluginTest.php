@@ -29,9 +29,6 @@ class BasicSearchHttpQueryExpanderPluginTest extends Unit
      */
     protected $tester;
 
-    /**
-     * @return void
-     */
     public function testSearchHttpQueryExpandedWithSortAndPagination(): void
     {
         // Arrange
@@ -68,9 +65,6 @@ class BasicSearchHttpQueryExpanderPluginTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testSearchHttpQueryExpandedWithDefaultSortAndPagination(): void
     {
         // Arrange

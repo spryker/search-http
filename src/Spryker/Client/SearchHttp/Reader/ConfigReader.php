@@ -28,11 +28,6 @@ class ConfigReader implements ConfigReaderInterface
      */
     protected SearchHttpConfigCollectionTransfer $searchHttpConfigCollectionTransferCache;
 
-    /**
-     * @param \Spryker\Client\SearchHttp\Dependency\Client\SearchHttpToStorageClientInterface $storageClient
-     * @param \Spryker\Client\SearchHttp\Dependency\Service\SearchHttpToSynchronizationServiceInterface $synchronizationService
-     * @param \Spryker\Client\SearchHttp\Mapper\ConfigMapperInterface $searchHttpConfigMapper
-     */
     public function __construct(
         protected SearchHttpToStorageClientInterface $storageClient,
         protected SearchHttpToSynchronizationServiceInterface $synchronizationService,
@@ -40,9 +35,6 @@ class ConfigReader implements ConfigReaderInterface
     ) {
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\SearchHttpConfigCollectionTransfer
-     */
     public function getSearchHttpConfigCollectionForCurrentStore(): SearchHttpConfigCollectionTransfer
     {
         $this->loadSearchConfigForCurrentStore();
@@ -50,11 +42,6 @@ class ConfigReader implements ConfigReaderInterface
         return $this->searchHttpConfigCollectionTransferCache;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\SearchHttpConfigCriteriaTransfer $searchHttpConfigCriteria
-     *
-     * @return \Generated\Shared\Transfer\SearchHttpConfigTransfer|null
-     */
     public function findSearchConfig(SearchHttpConfigCriteriaTransfer $searchHttpConfigCriteria): ?SearchHttpConfigTransfer
     {
         $searchHttpConfigs = $this->getSearchHttpConfigCollectionForCurrentStore()->getSearchHttpConfigs();
@@ -62,9 +49,6 @@ class ConfigReader implements ConfigReaderInterface
         return $searchHttpConfigs->count() > 0 ? $searchHttpConfigs->getIterator()->current() : null;
     }
 
-    /**
-     * @return void
-     */
     protected function loadSearchConfigForCurrentStore(): void
     {
         if ($this->isSearchHttpConfigCached) {

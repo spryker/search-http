@@ -36,11 +36,6 @@ class SearchRequestSender implements RequestSenderInterface
      */
     protected SearchQueryBuilderInterface $queryBuilder;
 
-    /**
-     * @param \Spryker\Client\SearchHttp\Dependency\Client\SearchHttpToKernelAppClientInterface $kernelAppClient
-     * @param \Spryker\Client\SearchHttp\Api\Builder\SearchHeaderBuilderInterface $headerBuilder
-     * @param \Spryker\Client\SearchHttp\Api\Builder\SearchQueryBuilderInterface $queryBuilder
-     */
     public function __construct(
         SearchHttpToKernelAppClientInterface $kernelAppClient,
         SearchHeaderBuilderInterface $headerBuilder,
@@ -51,12 +46,6 @@ class SearchRequestSender implements RequestSenderInterface
         $this->queryBuilder = $queryBuilder;
     }
 
-    /**
-     * @param \Spryker\Client\SearchExtension\Dependency\Plugin\QueryInterface $searchQuery
-     * @param \Generated\Shared\Transfer\SearchHttpConfigTransfer $searchHttpConfigTransfer
-     *
-     * @return \Generated\Shared\Transfer\AcpHttpResponseTransfer
-     */
     public function send(QueryInterface $searchQuery, SearchHttpConfigTransfer $searchHttpConfigTransfer): AcpHttpResponseTransfer
     {
         $acpHttpRequestTransfer = (new AcpHttpRequestTransfer())
@@ -72,12 +61,6 @@ class SearchRequestSender implements RequestSenderInterface
         return $acpHttpResponseTransfer;
     }
 
-    /**
-     * @param \Spryker\Client\SearchExtension\Dependency\Plugin\QueryInterface $searchQuery
-     * @param \Generated\Shared\Transfer\SearchHttpConfigTransfer $searchHttpConfigTransfer
-     *
-     * @return \Generated\Shared\Transfer\AcpHttpResponseTransfer
-     */
     public function sendSuggestionRequest(QueryInterface $searchQuery, SearchHttpConfigTransfer $searchHttpConfigTransfer): AcpHttpResponseTransfer
     {
         $acpHttpRequestTransfer = (new AcpHttpRequestTransfer())
@@ -93,12 +76,6 @@ class SearchRequestSender implements RequestSenderInterface
         return $acpHttpResponseTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\AcpHttpRequestTransfer $acpHttpRequestTransfer
-     * @param \Generated\Shared\Transfer\AcpHttpResponseTransfer $acpHttpResponseTransfer
-     *
-     * @return void
-     */
     public function logErrorForFailedResponse(AcpHttpRequestTransfer $acpHttpRequestTransfer, AcpHttpResponseTransfer $acpHttpResponseTransfer): void
     {
         if ($acpHttpResponseTransfer->getHttpStatusCode() >= 400) {
