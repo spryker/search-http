@@ -50,7 +50,7 @@ class SearchHttpClientTest extends Unit
 
     protected function mockSearchApiClient(): SearchHttpApiInterface|MockObject
     {
-        $searchApiClient = $this->makeEmpty(SearchHttpApiInterface::class);
+        $searchApiClient = $this->createMock(SearchHttpApiInterface::class);
 
         $this->tester->mockFactoryMethod(
             'createSearchApiClient',
