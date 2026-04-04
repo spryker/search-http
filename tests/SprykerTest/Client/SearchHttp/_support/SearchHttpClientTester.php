@@ -41,6 +41,7 @@ use Spryker\Client\SearchHttp\Config\PaginationConfig;
 use Spryker\Client\SearchHttp\Config\SearchConfigInterface;
 use Spryker\Client\SearchHttp\Config\SortConfig;
 use Spryker\Client\SearchHttp\Dependency\Client\SearchHttpToCategoryStorageClientInterface;
+use Spryker\Client\SearchHttp\Dependency\Client\SearchHttpToCustomerClientInterface;
 use Spryker\Client\SearchHttp\Dependency\Client\SearchHttpToKernelAppClientInterface;
 use Spryker\Client\SearchHttp\Dependency\Client\SearchHttpToLocaleClientInterface;
 use Spryker\Client\SearchHttp\Dependency\Client\SearchHttpToMoneyClientInterface;
@@ -81,23 +82,32 @@ class SearchHttpClientTester extends Actor
     use _generated\SearchHttpClientTesterActions;
 
     /**
-     * @var string
+     * @var array<string, string>
      */
-    protected const STORE_NAME = 'store';
+    public const REQUEST_HEADERS = [
+        'Accept-Language' => 'en_US',
+    ];
+
+    public const string SEARCH_HTTP_CONFIG_DATA = '{"search_http_configs":[{"application_id":"app_id","url":"url"}]}';
+
+    protected const string STORE_NAME = 'store';
 
     public function getSearchHttpQueryPlugin(): QueryInterface
     {
-        return new SearchHttpQueryPlugin(
+        $searchQueryPlugin = new SearchHttpQueryPlugin(
             (new SearchContextTransfer())
                 ->setSourceIdentifier(SearchHttpConfig::SOURCE_IDENTIFIER_PRODUCT)
                 ->setSearchHttpContext(new SearchHttpSearchContextTransfer()),
         );
+        $searchQueryPlugin->setFactory($this->getFactory());
+
+        return $searchQueryPlugin;
     }
 
     public function mockLocaleClientDependency(): void
     {
         $localeClient = Stub::makeEmpty(SearchHttpToLocaleClientInterface::class);
-        $localeClient->method('getCurrentLocale')->willReturn('de_DE');
+        $localeClient->method('getCurrentLocale')->willReturn('en_US');
 
         $this->mockFactoryMethod('getLocaleClient', $localeClient);
         $this->setDependency(SearchHttpDependencyProvider::CLIENT_LOCALE, $localeClient);
@@ -116,6 +126,17 @@ class SearchHttpClientTester extends Actor
 
         $this->mockFactoryMethod('getStoreClient', $storeClient);
         $this->setDependency(SearchHttpDependencyProvider::CLIENT_STORE, $storeClient);
+    }
+
+    public function mockCustomerClientDependency(): void
+    {
+        $customerClient = Stub::makeEmpty(SearchHttpToCustomerClientInterface::class);
+        $customerClient
+            ->method('getUserIdentifier')
+            ->willReturn('user-identifier');
+
+        $this->mockFactoryMethod('getCustomerClient', $customerClient);
+        $this->setDependency(SearchHttpDependencyProvider::CLIENT_CUSTOMER, $customerClient);
     }
 
     public function mockMoneyClientDependency(): void
@@ -458,6 +479,7 @@ class SearchHttpClientTester extends Actor
             ],
             'store' => static::STORE_NAME,
             'sourceIdentifier' => $searchQuery->getSearchContext()->getSourceIdentifier(),
+            'userToken' => 'user-identifier',
         ];
 
         $kernelAppClientMock
@@ -473,6 +495,7 @@ class SearchHttpClientTester extends Actor
             ->willReturn($response);
 
         $this->mockFactoryMethod('createKernelAppClient', $kernelAppClientMock);
+        $this->setDependency(SearchHttpDependencyProvider::CLIENT_KERNEL_APP, $kernelAppClientMock);
     }
 
     public function mockSearchHttpConfig(string $ip): void
@@ -480,13 +503,15 @@ class SearchHttpClientTester extends Actor
         $clientSearchHttpConfigMock = Stub::makeEmpty(ClientSearchHttpConfig::class);
         $clientSearchHttpConfigMock->method('getForwardForAddress')->willReturn($ip);
         $this->mockFactoryMethod('getConfig', $clientSearchHttpConfigMock);
+        $this->mockConfigMethod('getForwardForAddress', $ip);
     }
 
     public function extendWithTestData(QueryInterface $searchQueryPlugin): QueryInterface
     {
         $searchQueryPlugin->getSearchQuery()
+            ->setUserToken('user-identifier')
             ->setQueryString('search-string')
-            ->setLocale('de_DE')
+            ->setLocale('en_US')
             ->setPagination(
                 (new SearchQueryPaginationBuilder())->build(),
             )

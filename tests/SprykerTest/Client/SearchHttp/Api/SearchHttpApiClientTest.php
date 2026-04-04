@@ -22,18 +22,6 @@ use Codeception\Test\Unit;
 class SearchHttpApiClientTest extends Unit
 {
     /**
-     * @var string
-     */
-    protected const SEARCH_HTTP_CONFIG_DATA = '{"search_http_configs":[{"application_id":"app_id","url":"url"}]}';
-
-    /**
-     * @var array<string, string>
-     */
-    protected const REQUEST_HEADERS = [
-        'Accept-Language' => 'de_DE',
-    ];
-
-    /**
      * @var \SprykerTest\Client\SearchHttp\SearchHttpClientTester
      */
     protected $tester;
@@ -41,24 +29,24 @@ class SearchHttpApiClientTest extends Unit
     public function testSearchHttpRequestSuccessfullySent(): void
     {
         // Arrange
-        $searchQuery = $this->tester->getSearchHttpQueryPlugin();
-        $searchQuery = $this->tester->extendWithTestData($searchQuery);
+        $this->tester->mockCustomerClientDependency();
+        $this->tester->mockLocaleClientDependency();
         $this->tester->mockStoreClientDependency();
         $this->tester->mockSynchronizationServiceDependency();
-        $this->tester->mockStorageClientDependency(static::SEARCH_HTTP_CONFIG_DATA);
+        $this->tester->mockStorageClientDependency($this->tester::SEARCH_HTTP_CONFIG_DATA);
         $this->tester->mockUtilEncodingServiceDependency();
         $responseData = [['responseData']];
-
-        $this->tester->mockKernelAppClient('url', static::REQUEST_HEADERS + [
+        $searchQuery = $this->tester->getSearchHttpQueryPlugin();
+        $searchQuery = $this->tester->extendWithTestData($searchQuery);
+        $this->tester->mockKernelAppClient('url', $this->tester::REQUEST_HEADERS + [
                 'User-Agent' => sprintf('Spryker/%s', APPLICATION),
                 'X-Forwarded-For' => 'ip',
             ], $searchQuery, $responseData);
 
         $this->tester->mockSearchHttpConfig('ip');
-        $searchApiClient = $this->tester->getFactory()->createSearchApiClient();
 
         // Act
-        $response = $searchApiClient->search($searchQuery);
+        $response = $this->tester->getClient()->search($searchQuery);
 
         // Assert
         $this->assertEquals($responseData, $response);
@@ -69,9 +57,10 @@ class SearchHttpApiClientTest extends Unit
         // Arrange
         $searchQuery = $this->tester->getSearchHttpQueryPlugin();
         $searchQuery = $this->tester->extendWithTestData($searchQuery);
+        $this->tester->mockCustomerClientDependency();
         $this->tester->mockStoreClientDependency();
         $this->tester->mockSynchronizationServiceDependency();
-        $this->tester->mockStorageClientDependency(static::SEARCH_HTTP_CONFIG_DATA);
+        $this->tester->mockStorageClientDependency($this->tester::SEARCH_HTTP_CONFIG_DATA);
         $this->tester->mockUtilEncodingServiceDependency();
         $responseData = ['wrong_response'];
 

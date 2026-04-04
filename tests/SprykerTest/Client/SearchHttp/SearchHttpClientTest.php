@@ -11,8 +11,6 @@ use Codeception\Test\Unit;
 use Generated\Shared\DataBuilder\ProductConcretePageSearchBuilder;
 use Generated\Shared\DataBuilder\SuggestionsSearchHttpResponseBuilder;
 use Generated\Shared\Transfer\SuggestionsSearchHttpResponseTransfer;
-use PHPUnit\Framework\MockObject\MockObject;
-use Spryker\Client\SearchHttp\Api\SearchHttpApiInterface;
 
 /**
  * Auto-generated group annotations
@@ -33,31 +31,24 @@ class SearchHttpClientTest extends Unit
     public function testSearchSuccessfullyReturnSearchResult(): void
     {
         // Arrange
-        $this->tester->mockLocaleClientDependency();
-        $searchApiClient = $this->mockSearchApiClient();
         $searchQuery = $this->tester->getSearchHttpQueryPlugin();
+        $searchQuery = $this->tester->extendWithTestData($searchQuery);
+        $this->tester->mockLocaleClientDependency();
+        $this->tester->mockStoreClientDependency();
+        $this->tester->mockSynchronizationServiceDependency();
+        $this->tester->mockStorageClientDependency($this->tester::SEARCH_HTTP_CONFIG_DATA);
+        $this->tester->mockUtilEncodingServiceDependency();
 
-        // Assert
-        $searchApiClient
-            ->expects($this->exactly(1))
-            ->method('search')
-            ->with($searchQuery, [], [])
-            ->willReturn([]);
+        $this->tester->mockKernelAppClient('url', $this->tester::REQUEST_HEADERS + [
+                'User-Agent' => sprintf('Spryker/%s', APPLICATION),
+                'X-Forwarded-For' => 'ip',
+            ], $searchQuery, []);
+
+        $searchQuery = $this->tester->getSearchHttpQueryPlugin();
+        $this->tester->mockSearchHttpConfig('ip');
 
         // Act
         $this->tester->getClient()->search($searchQuery);
-    }
-
-    protected function mockSearchApiClient(): SearchHttpApiInterface|MockObject
-    {
-        $searchApiClient = $this->createMock(SearchHttpApiInterface::class);
-
-        $this->tester->mockFactoryMethod(
-            'createSearchApiClient',
-            $searchApiClient,
-        );
-
-        return $searchApiClient;
     }
 
     public function testFormatProductConcreteCatalogHttpSearchResultFormatsTheGivenDataSuccessfully(): void

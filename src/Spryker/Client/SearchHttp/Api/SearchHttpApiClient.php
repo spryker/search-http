@@ -69,7 +69,6 @@ class SearchHttpApiClient implements SearchHttpApiInterface
 
             $acpHttpResponseTransfer = $this->searchRequestSender->send($searchQuery, $searchHttpConfigTransfer);
             $responseData = $this->searchResponseDecoder->decode($acpHttpResponseTransfer);
-
             if (!$resultFormatters) {
                 return $responseData;
             }
